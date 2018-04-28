@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TALSITEM:jar">
+    <output-path>$PROJECT_DIR$/../../../../Servers/プラグインテスト/plugins</output-path>
+    <root id="archive" name="TALSITEM.jar">
+      <element id="module-output" name="TALSITEM" />
+    </root>
+  </artifact>
+</component>

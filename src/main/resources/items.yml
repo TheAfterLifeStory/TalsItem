@@ -1,0 +1,139 @@
+#TALSITEMS
+#========================================================
+#アイテムスキルは未実装
+#注意TIDを書き忘れると、nullがでます
+#========================================================
+#カラーコード: §
+#========================================================
+#アイテムタイプについて
+#種類
+# SWORD
+# BOW
+# AXE
+# MAGIC_WAND
+# KNIFE
+# SCYTHE
+# GUN
+# AMMO
+# MAGIC_BOOK
+# POTION
+# MAGIC_ITEM
+# QUEST_ITEM
+# EVENT_ITEM
+# STORY_ITEM
+# MATERIAL
+# MONEY
+# ORE
+# FOOD
+#========================================================
+#職業について
+#種類:
+# SOLDIER
+# WIZARD
+# GUARDIAN
+# THIEF
+# HUNTER
+# ASSASSIN
+# NECROMANCER
+# PRIEST
+#========================================================
+#ステータスについて
+#種類:
+# Type: <type>
+# Rank <Amount>
+# Damage <Damage>
+# MagicDamage <Damage> *未実装
+# CriticalChance <Chance>
+# CriticalDamage <Damage>
+# AttackChance <Chance>
+# Penetrate <Damage> *未実装
+# ManaDrain <Chance/Percent> *未実装
+# HealthDrain <Chance/Percent> *未実装
+# Defense <Defense> *未実装
+# BlockChance <Chance> *未実装
+# BlockPercent <Percent> *未実装
+# AvoidanceChance <Chance> *未実装
+# HealthAmount <Amount> *未実装
+# ManaAmount <Amount> *未実装
+# HealthRegeneration <Amount> *未実装
+# ManaRegeneration <Amount> *未実装
+# AddMana <Amount> *未実装
+# AddHealth <Amount> *未実装
+# WalkSpeed <Speed> *未実装
+# AmmoSpeed <Speed> *未実装
+# ReloadTime <Time> *未実装
+# ShootingSpeed <Time> *未実装
+# MaxAmmo <Amount> *未実装
+# AmmoType <Type> *未実装
+# GunType <Type> *未実装
+# ShootingType <Type> *未実装
+# Blur <Amount> *未実装
+# HedShotDamage <Damage>
+# PotionEffect <Effects> *未実装
+# ItemSkill <SkillName> *未実装
+# Money <Amount> *未実装
+# Durability <Amount> *未実装
+# FoodLevel <Amount> *未実装
+
+ダイヤの剣:
+  Item:
+    Name: 'ダイヤの剣'
+    Tid: 1
+    Id: 276
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'SWORD'
+      Damage: 4.0
+      CriticalChance: 10
+      CriticalDamage: 2
+      AttackChance: 98
+    Description:
+      - 'ダイヤの剣'
+    Conditions:
+      Class: 'SOLDIER'
+      Level: 10
+
+普通すぎる弓:
+  Item:
+    Name: 'The Bow'
+    Tid: 2
+    Id: 261
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'BOW'
+      Damage: 7.0
+      CriticalChance: 15
+      CriticalDamage: 1.8
+    Description:
+      - 'これぞ弓'
+      - '弓の中の弓'
+    Conditions:
+      Class: 'SOLDIER'
+      Level: 10
+
+ダイヤの斧:
+  Item:
+    Name: '世にも奇妙な斧'
+    Tid: 3
+    Id: 279
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'AXE'
+      Damage: 9.0
+      CriticalChance: 7
+      CriticalDamage: 3.5
+      AttackChance: 87
+      Penetrate: 2
+    Description:
+      - 'とても奇妙な斧'
+      - 'おかしくて笑えて来るほど'
+    Conditions:
+      Class: 'GUARDIAN'
+      Level: 10
+

@@ -1,0 +1,5 @@
+name: TALSITEMS
+version: ${project.version}
+main: talsitems.talsitems.TALSITEMS
+description: Item
+softdepend: [TALSAPI]
