@@ -27,6 +27,7 @@ public class CriticalManager {
                     p.sendMessage("§6§l≪§eデバッグ§6§l≫§fクリティカル");
                 }
             }
+
             //ダメージを変更
             e.setDamage(e.getDamage()*damage);
             p.sendMessage("会心の一撃");

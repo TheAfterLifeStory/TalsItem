@@ -6,10 +6,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import talsitems.talsitems.TALSITEMS;
 import talsitems.talsitems.manager.AttackChanceManager;
@@ -44,7 +42,7 @@ public class DamageEntityListener implements Listener {
         //アイテム
         ItemStack itemStack = p.getInventory().getItemInMainHand();
         int chance = 3,atttack = 95;
-        double damage = 1.5;
+        double damage = 1.5,penetrate = 0.0;
 
         //殴ったかどうか
         if(PlayerAttack.containsKey(p))
@@ -92,6 +90,15 @@ public class DamageEntityListener implements Listener {
                 lore = lore.replace("§6§o§6§r§7 命中率§a: §e","").replace("%","");
                 //数字を取得して代入
                 atttack = Integer.parseInt(lore);
+            }
+
+            //貫通ダメージ
+            if(lore.startsWith("§6§o§6§r§7 防具貫通ダメージ§a:"))
+            {
+                //リプレースで数字だけに
+                lore = lore.replace("§6§o§6§r§7 防具貫通ダメージ§a: §c","");
+                //数字を取得して代入
+                penetrate = Double.parseDouble(lore);
             }
         }
 

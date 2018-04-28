@@ -129,7 +129,7 @@
       CriticalChance: 7
       CriticalDamage: 3.5
       AttackChance: 87
-      Penetrate: 2
+      Penetrate: 2.0
     Description:
       - 'とても奇妙な斧'
       - 'おかしくて笑えて来るほど'
