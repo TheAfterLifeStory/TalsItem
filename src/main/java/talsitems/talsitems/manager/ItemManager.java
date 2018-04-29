@@ -4,6 +4,7 @@ import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import net.minecraft.server.v1_12_R1.NBTTagInt;
 import net.minecraft.server.v1_12_R1.NBTTagList;
 import net.minecraft.server.v1_12_R1.NBTTagString;
+import org.apache.commons.io.FileUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -11,10 +12,10 @@ import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
 import talsitems.talsitems.TALSITEMS;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,14 +33,24 @@ public class ItemManager {
 
         //ファイル取得
         File itemFile = new File((Bukkit.getServer().getPluginManager().getPlugin(plugin.getName()).getDataFolder()), File.separator +"Items");
-        File[] ymls = itemFile.listFiles();
 
         //ファイル作成2
         if(!itemFile.exists())
         {
             itemFile.mkdirs();
-            plugin.saveResource("items.yml", false);
         }
+
+        if(!new File(itemFile,"/items.yml").exists())
+        {
+            try {
+                FileUtils.copyToFile(plugin.getResource("items.yml"),new File(itemFile,"/items.yml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //itemファイルの中のファイルを取得
+        File[] ymls = itemFile.listFiles();
 
         //ファイルの中身がからじゃないか検知してリターン
         if(ymls == null) return;
@@ -58,26 +69,23 @@ public class ItemManager {
 
     private void setItemStackList(YamlConfiguration config, String name)
     {
-        //アイテムを制作
-        ItemStack item = new ItemStack(Material.AIR, 1,(short) 1);
 
         //値を制作
         boolean unbreakable;
-        int id, level,tid,rank;
+        int id, level,tid,rank,data;
         String itemname,type,classes,Tid;
-        MaterialData data = item.getData();
         double damage;
         List<String> list = new ArrayList<>();
         List<String> stats = new ArrayList<>();
 
         //デフォルトの値を設定
         id =1; //アイテムＩＤ
-        data.setData((byte) 0); //メタデータ
         tid=0;//TALS_ID
         Tid="0000";//Ｉｄ設定
+        data = 0;//メタデータ
         unbreakable = false;//耐久
         itemname="";//アイテム名
-        type="素材";//アイテムタイプ
+        type="§b素材";//アイテムタイプ
         classes = null;//使用可能クラス
         level = 1;//使用可能レベル
         damage = 1.0;//ダメージでほぉると
@@ -92,7 +100,7 @@ public class ItemManager {
 
         //メタデータ
         if(config.get(name+".Item.Data") !=null) {
-            data.setData((byte)config.getInt(name + ".Item.Data"));
+            data= config.getInt(name + ".Item.Data");
         }
 
         //ＴＩＤ
@@ -334,9 +342,11 @@ public class ItemManager {
             stats.add("§6§o§6§r§7 回復量§a: §6"+config.getDouble(name + ".Data.Stats.Durability")+"§f/§c"+config.getDouble(name + ".Data.Stats.FoodLevel"));
         }
 
+        //アイテムを制作
+        ItemStack item = new ItemStack(Material.AIR, 1,(short) data);
+
         //アイテムに値を設定
         item.setTypeId(id);//Ｔｙｐｅ
-        item.setData(data);//Ｄａｔａ
 
         ItemMeta itemmeta = item.getItemMeta();//アイテムmeta作成
 
@@ -507,9 +517,9 @@ public class ItemManager {
             case "QUEST_ITEM":
                 return "§bクエストアイテム";//クエストアイテム
             case "EVENT_ITEM":
-                return "イベントアイテム";//イベントアイテム
+                return "§bイベントアイテム";//イベントアイテム
             case "STORY_ITEM":
-                return "ストーリーアイテム";//ストーリーアイテム
+                return "§bストーリーアイテム";//ストーリーアイテム
             case "MATERIAL":
                 return "§b素材";//素材
             case "MONEY":

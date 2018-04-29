@@ -53,10 +53,10 @@
 # Penetrate <Damage>
 # ManaDrain <Chance/Percent> *未実装
 # HealthDrain <Chance/Percent> *未実装
-# Defense <Defense> 
-# BlockChance <Chance> *未実装
-# BlockPercent <Percent> *未実装
-# AvoidanceChance <Chance> *未実装
+# Defense <Defense>
+# BlockChance <Chance>
+# BlockPercent <Percent>
+# AvoidanceChance <Chance>
 # HealthAmount <Amount> *未実装
 # ManaAmount <Amount> *未実装
 # HealthRegeneration <Amount> *未実装
@@ -72,7 +72,7 @@
 # GunType <Type> *未実装
 # ShootingType <Type> *未実装
 # Blur <Amount> *未実装
-# HedShotDamage <Damage>
+# HedShotDamage <Damage> *未実装
 # PotionEffect <Effects> *未実装
 # ItemSkill <SkillName> *未実装
 # Money <Amount> *未実装
@@ -141,6 +141,27 @@
       Class: 'GUARDIAN'
       Level: 10
 
+マジックワンド:
+  Item:
+    Name: '呪いの杖'
+    Tid: 4
+    Id: 280
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'MAGIC_WAND'
+      Damage: 6.0
+      CriticalChance: 10
+      CriticalDamage: 1.8
+    Description:
+      - '不気味な杖'
+      - 'まがまがしい空気が'
+      - '伝わってくる'
+    Conditions:
+      Class: 'PRIEST'
+      Level: 50
+
 普通の革防具頭:
   Item:
     Name: '革の頭'
@@ -150,8 +171,9 @@
     Unbreakable: true
   Data:
     Stats:
-      Type: 'EVENT_ITEM'
+      Type: 'HELMET'
       Defense: 2.0
+      AvoidanceChance: 4
     Description:
       - '幻の革防具'
       - 'いびつな形'
@@ -168,8 +190,10 @@
     Unbreakable: true
   Data:
     Stats:
-      Type: 'EVENT_ITEM'
+      Type: 'CHESTPLATE'
       Defense: 3.0
+      BlockChance: 13
+      BlockPercent: 23
     Description:
       - '幻の革防具'
       - 'いびつな形'
@@ -186,8 +210,10 @@
     Unbreakable: true
   Data:
     Stats:
-      Type: 'EVENT_ITEM'
+      Type: 'LEGGINGS'
       Defense: 2.5
+      BlockChance: 20
+      BlockPercent: 17
     Description:
       - '幻の革防具'
       - 'いびつな形'
@@ -204,8 +230,9 @@
     Unbreakable: true
   Data:
     Stats:
-      Type: 'EVENT_ITEM'
+      Type: 'BOOT'
       Defense: 2.0
+      AvoidanceChance: 3
     Description:
       - '幻の革防具'
       - 'いびつな形'
