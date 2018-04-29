@@ -14,6 +14,14 @@ import java.util.TreeMap;
 
 public final class TALSITEMS extends JavaPlugin {
 
+    /***************************************************
+     *                                                 *
+     *   Copyright                                     *
+     *           The After Life Story                  *
+     *                              Rights Reserved    *
+     *                                                 *
+     ***************************************************/
+
     private String prefix = "§e≪§cT§6A§aL§bS §9Items§e≫ ";
 
     public static HashMap<Integer, ItemStack> itemIdList = new HashMap<>();

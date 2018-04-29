@@ -53,7 +53,7 @@
 # Penetrate <Damage>
 # ManaDrain <Chance/Percent> *未実装
 # HealthDrain <Chance/Percent> *未実装
-# Defense <Defense> *未実装
+# Defense <Defense> 
 # BlockChance <Chance> *未実装
 # BlockPercent <Percent> *未実装
 # AvoidanceChance <Chance> *未実装

@@ -18,14 +18,6 @@ import java.util.HashMap;
 
 public class DamageEntityListener implements Listener {
 
-    /***************************************************
-     *                                                 *
-     *   Copyright                                     *
-     *           The After Life Story                  *
-     *                              Rights Reserved    *
-     *                                                 *
-     ***************************************************/
-
     @EventHandler (priority = EventPriority.LOW)
     public void onDamage(EntityDamageByEntityEvent e)
     {
