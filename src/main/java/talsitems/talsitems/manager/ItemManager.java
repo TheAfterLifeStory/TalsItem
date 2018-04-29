@@ -135,20 +135,22 @@ public class ItemManager {
         }
 
 
+        Tid=tid+"";//元の値設定
         //TIDの設定
-        if(tid+"".length() <4)
+        if(Tid.length() <4)
         {
-            Tid=tid+"";//元の値設定
+
             for(int i = 0; Tid.length() < 4; i++)//四桁になるまで繰り返す
             {
                 Tid="0"+Tid;//0を追加する
             }
+
         }
 
         //ランクセット
         if(config.get(name+".Data.Stats.Rank") !=null)
         {
-            rank = config.getInt(name + "..Data.Stats.Rank");
+            rank = config.getInt(name + ".Data.Stats.Rank");
         }
 
         //ステータス作成
@@ -490,6 +492,14 @@ public class ItemManager {
                 return "§b大鎌";//大鎌
             case "MAGIC_BOOK":
                 return "§b魔法の書";//魔法の書
+            case "HELMET":
+                return "§bヘルメット";//ヘルメット
+            case "CHESTPLATE":
+                return "§bチェストプレート";//チェストプレート
+            case "LEGGINGS":
+                return "§bレギンス";//レギンス
+            case "BOOT":
+                return "§bブーツ";//ブーツ
             case "POTION":
                 return "§bポーション";//ポーション
             case "MAGIC_ITEM":

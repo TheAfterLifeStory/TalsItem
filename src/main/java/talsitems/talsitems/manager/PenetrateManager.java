@@ -10,7 +10,7 @@ public class PenetrateManager {
     {
 
         //ダメージが0だった時
-        if(damage >= 0)
+        if(damage <= 0)
         {
             return;
         }

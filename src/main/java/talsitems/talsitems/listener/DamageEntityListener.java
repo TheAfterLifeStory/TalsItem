@@ -12,12 +12,11 @@ import org.bukkit.inventory.ItemStack;
 import talsitems.talsitems.TALSITEMS;
 import talsitems.talsitems.manager.AttackChanceManager;
 import talsitems.talsitems.manager.CriticalManager;
+import talsitems.talsitems.manager.PenetrateManager;
 
 import java.util.HashMap;
 
 public class DamageEntityListener implements Listener {
-
-    public static HashMap<Player, Boolean> PlayerAttack = new HashMap<>();
 
     /***************************************************
      *                                                 *
@@ -43,12 +42,6 @@ public class DamageEntityListener implements Listener {
         ItemStack itemStack = p.getInventory().getItemInMainHand();
         int chance = 3,atttack = 95;
         double damage = 1.5,penetrate = 0.0;
-
-        //殴ったかどうか
-        if(PlayerAttack.containsKey(p))
-        {
-            return;
-        }
 
         //空気だった場合
         if(itemStack.getType() == Material.AIR)
@@ -107,6 +100,9 @@ public class DamageEntityListener implements Listener {
 
         //クリティカル設定
         new CriticalManager().setCritical(e,chance,damage,p);
+
+        //防具貫通
+        new PenetrateManager().setPenetrate(e,penetrate,p);
     }
 
     @EventHandler (priority = EventPriority.HIGHEST)
@@ -133,11 +129,13 @@ public class DamageEntityListener implements Listener {
         }
     }
 
+    /*
     @EventHandler
     public void onDamages(PlayerInteractEntityEvent e)
     {
         LivingEntity le = (LivingEntity) e.getRightClicked();
         le.damage(5,e.getPlayer());
     }
+    */
 
 }

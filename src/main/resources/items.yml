@@ -16,6 +16,10 @@
 # GUN
 # AMMO
 # MAGIC_BOOK
+# HELMET
+# CHESTPLATE
+# LEGGINGS
+# BOOT
 # POTION
 # MAGIC_ITEM
 # QUEST_ITEM
@@ -46,7 +50,7 @@
 # CriticalChance <Chance>
 # CriticalDamage <Damage>
 # AttackChance <Chance>
-# Penetrate <Damage> *未実装
+# Penetrate <Damage>
 # ManaDrain <Chance/Percent> *未実装
 # HealthDrain <Chance/Percent> *未実装
 # Defense <Defense> *未実装
@@ -137,3 +141,74 @@
       Class: 'GUARDIAN'
       Level: 10
 
+普通の革防具頭:
+  Item:
+    Name: '革の頭'
+    Tid: 21
+    Id: 298
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'EVENT_ITEM'
+      Defense: 2.0
+    Description:
+      - '幻の革防具'
+      - 'いびつな形'
+    Conditions:
+      Class: 'SOLDIER'
+      Level: 10
+
+普通の革防具服:
+  Item:
+    Name: '革の服'
+    Tid: 22
+    Id: 299
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'EVENT_ITEM'
+      Defense: 3.0
+    Description:
+      - '幻の革防具'
+      - 'いびつな形'
+    Conditions:
+      Class: 'SOLDIER'
+      Level: 10
+
+普通の革防具ズボン:
+  Item:
+    Name: '革のズボン'
+    Tid: 23
+    Id: 300
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'EVENT_ITEM'
+      Defense: 2.5
+    Description:
+      - '幻の革防具'
+      - 'いびつな形'
+    Conditions:
+      Class: 'SOLDIER'
+      Level: 10
+
+普通の革防具靴:
+  Item:
+    Name: '革の靴'
+    Tid: 24
+    Id: 301
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'EVENT_ITEM'
+      Defense: 2.0
+    Description:
+      - '幻の革防具'
+      - 'いびつな形'
+    Conditions:
+      Class: 'SOLDIER'
+      Level: 10
