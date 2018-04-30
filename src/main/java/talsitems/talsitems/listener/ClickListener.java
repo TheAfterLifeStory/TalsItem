@@ -127,7 +127,7 @@ public class ClickListener implements Listener {
             p.playSound(loc,Sound.ENTITY_PLAYER_BREATH,0.f,0.5f);
             p.playSound(loc,Sound.ENTITY_EVOCATION_ILLAGER_PREPARE_SUMMON,2,0.8f);
             particle(loc, p);
-            loc.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE,loc.add(0,0.1,0),400,0.8,0,0.8,0);
+            loc.getWorld().spawnParticle(Particle.ENCHANTMENT_TABLE,loc.add(0,0.1,0),360,0.8,0,0.8,0);
 
             for(Entity entity : loc.getWorld().getNearbyEntities(loc,2,1,2))
             {
