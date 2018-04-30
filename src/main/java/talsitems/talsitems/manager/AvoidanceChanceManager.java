@@ -28,6 +28,8 @@ public class AvoidanceChanceManager {
             e.setCancelled(true);
             p.sendMessage("§b§l攻撃を避けた！");
 
+            p.setVelocity(p.getLocation().getDirection().multiply(-0.5));
+
             //音
             p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP,1.2f,0.4f);
             p.playSound(p.getLocation(), Sound.ENTITY_WITCH_THROW, 1.2f,2f);

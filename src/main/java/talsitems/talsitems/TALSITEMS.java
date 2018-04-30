@@ -4,10 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-import talsitems.talsitems.listener.ClickListener;
-import talsitems.talsitems.listener.DamageEntityListener;
-import talsitems.talsitems.listener.JoinListener;
-import talsitems.talsitems.listener.PlayerDamageListener;
+import talsitems.talsitems.listener.*;
 import talsitems.talsitems.manager.ItemManager;
 
 import java.util.HashMap;
@@ -43,6 +40,7 @@ public final class TALSITEMS extends JavaPlugin {
         //リスナー読み込み
         getServer().getPluginManager().registerEvents(new DamageEntityListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerDamageListener(), this);
+        getServer().getPluginManager().registerEvents(new HealingListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
         getServer().getPluginManager().registerEvents(new ClickListener(), this);
 

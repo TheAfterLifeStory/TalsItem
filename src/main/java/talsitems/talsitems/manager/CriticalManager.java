@@ -1,5 +1,8 @@
 package talsitems.talsitems.manager;
 
+import org.bukkit.Effect;
+import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -35,6 +38,11 @@ public class CriticalManager {
             //音
             p.playSound(p.getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR,2f,1f);
             p.playSound(p.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1.5f,1f);
+
+            Location l = e.getEntity().getLocation();
+            e.getEntity().getWorld().spawnParticle(Particle.VILLAGER_ANGRY,l,2,0.3,0.2,0.3,0);
+            e.getEntity().getWorld().spawnParticle(Particle.CLOUD,l,4,0.5,1.5,0.5,0);
+            e.getEntity().getWorld().spawnParticle(Particle.CRIT,l,10,0.5,1.5,0.5,0);
         }
     }
 }

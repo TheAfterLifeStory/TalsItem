@@ -75,6 +75,8 @@ public class ClickListener implements Listener {
 
             //パーティクル
             p.getWorld().spawnParticle(Particle.SPELL_WITCH, loc, 0, 1, 0, 0, 0);
+            p.playSound(loc,Sound.BLOCK_ENCHANTMENT_TABLE_USE,8,0.8f);
+            p.playSound(loc,Sound.ENTITY_ILLUSION_ILLAGER_MIRROR_MOVE,1.5f,2.5f);
 
             for(int i = 0; i < 20; i++ )
             {
@@ -97,6 +99,11 @@ public class ClickListener implements Listener {
                 {
                     //entityを変える
                     if(!(entity instanceof LivingEntity))
+                    {
+                        continue;
+                    }
+
+                    if(entity == p)
                     {
                         continue;
                     }
@@ -125,6 +132,11 @@ public class ClickListener implements Listener {
             {
                 //entityを変える
                 if(!(entity instanceof LivingEntity))
+                {
+                    continue;
+                }
+
+                if(entity == p)
                 {
                     continue;
                 }

@@ -73,13 +73,18 @@ public class ItemManager {
         //値を制作
         boolean unbreakable;
         int id, level,tid,rank,data;
-        String itemname,type,classes,Tid;
+        String itemname;
+        String type;
+        String classes;
+        String Tid;
+        int health;
         double damage;
         List<String> list = new ArrayList<>();
         List<String> stats = new ArrayList<>();
 
         //デフォルトの値を設定
         id =1; //アイテムＩＤ
+        health = 0;
         tid=0;//TALS_ID
         Tid="0000";//Ｉｄ設定
         data = 0;//メタデータ
@@ -249,7 +254,8 @@ public class ItemManager {
         //ヘルス増加
         if(config.get(name+".Data.Stats.AddHealth") !=null)
         {
-            stats.add("§6§o§6§r§7 ヘルス§a: §c+"+config.getDouble(name + ".Data.Stats.ManaRegeneration"));
+            stats.add("§6§o§6§r§7 ヘルス§a: §c+"+config.getDouble(name + ".Data.Stats.AddHealth"));
+            health = config.getInt(name+".Data.Stats.AddHealth");
         }
 
         //マナ増加
@@ -415,7 +421,8 @@ public class ItemManager {
         item.setItemMeta(itemmeta);//アイテムmeta置き換え
 
         //ステータスの設定
-        item = setDamage(item,damage,type);
+        item = setDamage(item,damage,health,type);
+        //item = setHealth(item,health,type);
 
         TALSITEMS.itemIdList.put(tid, item);
         TALSITEMS.itemNameList.put(name, item);
@@ -534,7 +541,7 @@ public class ItemManager {
         return null;
     }
 
-    private ItemStack setDamage(ItemStack item,double damage,String type)
+    private ItemStack setDamage(ItemStack item,double damage,int health2,String type)
     {
         if(item.getType() == Material.BOW
                 || type.equals("§b魔法の杖")
@@ -549,6 +556,11 @@ public class ItemManager {
         NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
         NBTTagList modifiers = new NBTTagList();
         NBTTagCompound damages = new NBTTagCompound();
+        NBTTagCompound health = new NBTTagCompound();
+        NBTTagCompound health1 = new NBTTagCompound();
+        NBTTagCompound health5 = new NBTTagCompound();
+        NBTTagCompound health3 = new NBTTagCompound();
+        NBTTagCompound health4 = new NBTTagCompound();
         damages.set("AttributeName", new NBTTagString("generic.attackDamage"));
         damages.set("Name", new NBTTagString("generic.attackDamage"));
         damages.set("Amount", new NBTTagInt((int) damage));
@@ -556,7 +568,60 @@ public class ItemManager {
         damages.set("UUIDLeast", new NBTTagInt(894654));
         damages.set("UUIDMost", new NBTTagInt(2872));
         damages.set("Slot", new NBTTagString("mainhand"));
+        health.set("AttributeName", new NBTTagString("generic.maxHealth"));
+        health.set("Name", new NBTTagString("generic.maxHealth"));
+        health.set("Amount", new NBTTagInt(health2));
+        health.set("Operation", new NBTTagInt(0));
+        health.set("UUIDLeast", new NBTTagInt(894654));
+        health.set("UUIDMost", new NBTTagInt(2872));
+        health.set("Slots", new NBTTagString("mainhand"));
+        modifiers.add(health);
+        //health.set("Slot", new NBTTagString("head"));
+        //health.set("Slot", new NBTTagString("chest"));
+        //health.set("Slot", new NBTTagString("legs"));
+        //health.set("Slot", new NBTTagString("feet"));
+        health3.set("AttributeName", new NBTTagString("generic.maxHealth"));
+        health3.set("Name", new NBTTagString("generic.maxHealth"));
+        health3.set("Amount", new NBTTagInt(health2));
+        health3.set("Operation", new NBTTagInt(0));
+        health3.set("UUIDLeast", new NBTTagInt(894654));
+        health3.set("UUIDMost", new NBTTagInt(2872));
+        health3.set("Slots", new NBTTagString("head"));
+        modifiers.add(health3);
         modifiers.add(damages);
+        assert compound != null;
+        compound.set("AttributeModifiers", modifiers);
+        nmsStack.setTag(compound);
+        item = CraftItemStack.asBukkitCopy(nmsStack);
+
+        return item;
+    }
+
+    private ItemStack setHealth(ItemStack item,int health2,String type)
+    {
+        if(item.getType() == Material.BOW
+                || type.equals("§b魔法の杖")
+                || type.equals("§b魔法の書")
+                || type.equals("§b銃")
+                )
+        {
+            return item;
+        }
+
+        net.minecraft.server.v1_12_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(item);
+        NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
+        NBTTagList modifiers = new NBTTagList();
+        NBTTagCompound damages = new NBTTagCompound();
+        NBTTagCompound health = new NBTTagCompound();
+        health.set("AttributeName", new NBTTagString("generic.maxHealth"));
+        health.set("Name", new NBTTagString("generic.maxHealth"));
+        health.set("Amount", new NBTTagInt(health2));
+        health.set("Operation", new NBTTagInt(0));
+        health.set("UUIDLeast", new NBTTagInt(894654));
+        health.set("UUIDMost", new NBTTagInt(2872));
+        health.set("Slot", new NBTTagString("mainhand"));
+        modifiers.add(damages);
+        modifiers.add(health);
         assert compound != null;
         compound.set("AttributeModifiers", modifiers);
         nmsStack.setTag(compound);
