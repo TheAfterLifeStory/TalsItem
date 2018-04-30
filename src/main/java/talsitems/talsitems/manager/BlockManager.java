@@ -16,6 +16,12 @@ public class BlockManager {
             return;
         }
 
+        //ダメージケース
+        if(e.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK)
+        {
+            return;
+        }
+
         //ランダム作成
         Random random = new Random();
         int r = random.nextInt(100);

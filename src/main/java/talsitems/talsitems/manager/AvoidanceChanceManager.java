@@ -11,6 +11,17 @@ public class AvoidanceChanceManager {
 
     public void setAvoidance(EntityDamageEvent e, int chance, Player p)
     {
+        if(e.isCancelled())
+        {
+            return;
+        }
+
+        //ダメージケース
+        if(e.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK)
+        {
+            return;
+        }
+
         //ランダム作成
         Random random = new Random();
         int r = random.nextInt(100);
