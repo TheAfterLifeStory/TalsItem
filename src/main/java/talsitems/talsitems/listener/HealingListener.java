@@ -10,6 +10,12 @@ import talsitems.talsitems.manager.HealingManager;
 
 public class HealingListener implements Listener {
 
+    private HealingManager hm;
+
+    public HealingListener() {
+        hm = new HealingManager();
+    }
+
     @EventHandler
     public void onHeol(EntityRegainHealthEvent e)
     {
@@ -50,6 +56,6 @@ public class HealingListener implements Listener {
         }
 
         //設定
-        new HealingManager().setHealing(e,heal);
+        hm.setHealing(e,heal);
     }
 }

@@ -14,6 +14,17 @@ import talsitems.talsitems.manager.PenetrateManager;
 
 public class DamageEntityListener implements Listener {
 
+    private AttackChanceManager acm;
+    private CriticalManager cm;
+    private PenetrateManager pm;
+
+    public DamageEntityListener()
+    {
+        acm = new AttackChanceManager();
+        cm = new CriticalManager();
+        pm = new PenetrateManager();
+    }
+
     @EventHandler (priority = EventPriority.LOW)
     public void onDamage(EntityDamageByEntityEvent e)
     {
@@ -84,13 +95,13 @@ public class DamageEntityListener implements Listener {
         }
 
         //命中率
-        new AttackChanceManager().setCritical(e,atttack,p);
+        acm.setCritical(e,atttack,p);
 
         //クリティカル設定
-        new CriticalManager().setCritical(e,chance,damage,p);
+        cm.setCritical(e,chance,damage,p);
 
         //防具貫通
-        new PenetrateManager().setPenetrate(e,penetrate,p);
+        pm.setPenetrate(e,penetrate,p);
     }
 
     @EventHandler (priority = EventPriority.HIGHEST)

@@ -519,6 +519,14 @@ public class ItemManager {
                 return "§bレギンス";//レギンス
             case "BOOT":
                 return "§bブーツ";//ブーツ
+            case "EARRINGS":
+                return "§bイヤリング";//イヤリング
+            case "NECKLACE":
+                return "§bネックレス";//ネックレス
+            case "BRACELET":
+                return "§b腕輪";//ブレスレット
+            case "RING":
+                return "§b指輪";//指輪
             case "POTION":
                 return "§bポーション";//ポーション
             case "MAGIC_ITEM":

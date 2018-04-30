@@ -20,6 +20,10 @@
 # CHESTPLATE
 # LEGGINGS
 # BOOT
+# EARRINGS
+# NECKLACE
+# BRACELET
+# RING
 # POTION
 # MAGIC_ITEM
 # QUEST_ITEM
@@ -58,12 +62,12 @@
 # BlockChance <Chance>
 # BlockPercent <Percent>
 # AvoidanceChance <Chance>
-# HealthAmount <Amount> *未実装
+# HealthAmount <Amount>
 # ManaAmount <Amount> *未実装
 # HealthRegeneration <Amount> *未実装
 # ManaRegeneration <Amount> *未実装
 # AddMana <Amount> *未実装
-# AddHealth <Amount> *未実装
+# AddHealth <Amount>
 # WalkSpeed <Speed> *未実装
 # AmmoSpeed <Speed> *未実装
 # ReloadTime <Time> *未実装
@@ -172,6 +176,7 @@
       Damage: 4.0
       CriticalChance: 10
       CriticalDamage: 1.8
+      AttackChance: 93
     Description:
       - '不気味な杖'
       - 'まがまがしい空気が'

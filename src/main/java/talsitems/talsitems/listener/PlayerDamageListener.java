@@ -14,6 +14,17 @@ import talsitems.talsitems.manager.DefenseManager;
 
 public class PlayerDamageListener implements Listener {
 
+    private AvoidanceChanceManager acm;
+    private BlockManager bm;
+    private DefenseManager dm;
+
+    public PlayerDamageListener()
+    {
+        acm = new AvoidanceChanceManager();
+        bm = new BlockManager();
+        dm = new DefenseManager();
+    }
+
     @EventHandler (priority = EventPriority.NORMAL)
     public void onDamaged(EntityDamageEvent e)
     {
@@ -101,13 +112,13 @@ public class PlayerDamageListener implements Listener {
         }
 
         //回避
-        new AvoidanceChanceManager().setAvoidance(e,achance,p);
+        acm.setAvoidance(e,achance,p);
 
         //ブロック
-        new BlockManager().setBlock(e,block,chance,p);
+        bm.setBlock(e,block,chance,p);
 
         //防御力セット
-        new DefenseManager().setDefense(e,defense,p);
+        dm.setDefense(e,defense,p);
 
     }
 
