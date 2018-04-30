@@ -1,5 +1,6 @@
 package talsitems.talsitems.manager;
 
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import talsitems.talsitems.TALSITEMS;
@@ -30,7 +31,10 @@ public class CriticalManager {
 
             //ダメージを変更
             e.setDamage(e.getDamage()*damage);
-            p.sendMessage("会心の一撃");
+            //p.sendMessage("会心の一撃");
+            //音
+            p.playSound(p.getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR,2f,1f);
+            p.playSound(p.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1.5f,1f);
         }
     }
 }

@@ -1,5 +1,6 @@
 package talsitems.talsitems.manager;
 
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import talsitems.talsitems.TALSITEMS;
@@ -24,7 +25,10 @@ public class AttackChanceManager {
             }
             //ダメージを与えない
             e.setCancelled(true);
-            p.sendMessage("§cMISS");
+            p.sendMessage("§a§lMiss!");
+
+            //音
+            p.playSound(p.getLocation(), Sound.ENTITY_WITCH_THROW,0.8f, 4);
         }
     }
 }

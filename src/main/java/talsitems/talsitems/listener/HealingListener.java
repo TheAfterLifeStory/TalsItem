@@ -1,4 +1,4 @@
 package talsitems.talsitems.listener;
 
-public class HealingManager {
+public class HealingListener {
 }

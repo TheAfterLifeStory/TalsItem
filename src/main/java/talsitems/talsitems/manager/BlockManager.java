@@ -1,5 +1,6 @@
 package talsitems.talsitems.manager;
 
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import talsitems.talsitems.TALSITEMS;
@@ -28,8 +29,13 @@ public class BlockManager {
                 }
             }
 
+            //計算
             e.setDamage(e.getDamage()*(block/100));
-            p.sendMessage("§e§lブロック");
+            //メッセージ
+            p.sendMessage("§c§l攻撃を防いだ！");
+            //音
+            p.playSound(p.getLocation(), Sound.ITEM_SHIELD_BLOCK, 1.2f,1.5f);
+            p.playSound(p.getLocation(), Sound.ENTITY_ZOMBIE_ATTACK_IRON_DOOR,0.5f,0.3f);
         }
     }
 }

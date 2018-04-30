@@ -1,5 +1,6 @@
 package talsitems.talsitems.manager;
 
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import talsitems.talsitems.TALSITEMS;
@@ -25,7 +26,11 @@ public class AvoidanceChanceManager {
 
             //ダメージを与えない
             e.setCancelled(true);
-            p.sendMessage("§6攻撃をかわした");
+            p.sendMessage("§b§l攻撃を避けた！");
+
+            //音
+            p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_ATTACK_SWEEP,1.2f,0.4f);
+            p.playSound(p.getLocation(), Sound.ENTITY_WITCH_THROW, 1.2f,2f);
         }
     }
 }

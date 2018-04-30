@@ -365,7 +365,7 @@ public class ItemManager {
         ArrayList<String> lore = new ArrayList<>();
 
         lore.add("§6§l《§fステータス§6§l》");
-        lore.add("§6§o§6§r§7"+" アイテムタイプ§a: "+type);
+        lore.add("§6§o§6§r§7 アイテムタイプ§a: "+type);
 
         //ランク
         String steer = "§f✩§f✩§f✩§f✩§f✩§f✩";
@@ -415,7 +415,7 @@ public class ItemManager {
         item.setItemMeta(itemmeta);//アイテムmeta置き換え
 
         //ステータスの設定
-        item = setDamage(item,damage);
+        item = setDamage(item,damage,type);
 
         TALSITEMS.itemIdList.put(tid, item);
         TALSITEMS.itemNameList.put(name, item);
@@ -502,6 +502,8 @@ public class ItemManager {
                 return "§b大鎌";//大鎌
             case "MAGIC_BOOK":
                 return "§b魔法の書";//魔法の書
+            case "GUN":
+                return "§b銃";//随意
             case "HELMET":
                 return "§bヘルメット";//ヘルメット
             case "CHESTPLATE":
@@ -532,9 +534,13 @@ public class ItemManager {
         return null;
     }
 
-    private ItemStack setDamage(ItemStack item,double damage)
+    private ItemStack setDamage(ItemStack item,double damage,String type)
     {
-        if(item.getType() == Material.BOW)
+        if(item.getType() == Material.BOW
+                || type.equals("§b魔法の杖")
+                || type.equals("§b魔法の書")
+                || type.equals("§b銃")
+                )
         {
             return item;
         }

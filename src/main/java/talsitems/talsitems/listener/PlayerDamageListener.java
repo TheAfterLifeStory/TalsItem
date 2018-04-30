@@ -41,6 +41,7 @@ public class PlayerDamageListener implements Listener {
 
         for(int i = 0; i < itemStack.length; i++)
         {
+
             //空気だった場合
             if(itemStack[i].getType() == Material.AIR)
             {

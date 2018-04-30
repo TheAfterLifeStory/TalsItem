@@ -42,6 +42,7 @@
 # PRIEST
 #========================================================
 #ステータスについて
+#注意: 専用アクセサリーステータスの欄がありここに書かれてるステータスが一部使えません
 #種類:
 # Type: <type>
 # Rank <Amount>
@@ -78,6 +79,23 @@
 # Money <Amount> *未実装
 # Durability <Amount> *未実装
 # FoodLevel <Amount> *未実装
+#========================================================
+#ステータス(アクセサリー)
+#種類:
+# AddDamage: <Damage> *未実装
+# AddDefense: <Defense> *未実装
+# AddMagicDamage: <Damage> *未実装
+# AddPenetrate: <Damage> *未実装
+# AddCriticalChance: <Damage> *未実装
+# AddAvoidanceChance: <Chance> *未実装
+# AddBlockChance: <Chance> *未実装
+# AddXpBonus: <Bonus> *未実装
+# AddHealth: <Health> *未実装
+# AddHealthAmount: <Amount> *未実装
+# AddManaAmount: <Amount> *未実装
+# AddHealthRegeneration: <Amount> *未実装
+# AddManaRegeneration: <Amount> *未実装
+# AddWalkSpeed: <Speed> *未実装
 
 ダイヤの剣:
   Item:
@@ -151,7 +169,7 @@
   Data:
     Stats:
       Type: 'MAGIC_WAND'
-      Damage: 6.0
+      Damage: 4.0
       CriticalChance: 10
       CriticalDamage: 1.8
     Description:
@@ -161,6 +179,29 @@
     Conditions:
       Class: 'PRIEST'
       Level: 50
+
+神秘の書:
+  Item:
+    Name: '神秘の書'
+    Tid: 5
+    Id: 340
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'MAGIC_BOOK'
+      Damage: 6.0
+      MagicDamage: 4.0
+      CriticalChance: 16
+      CriticalDamage: 2.3
+    Description:
+      - '本が光って見えるほど'
+      - '美しい'
+      - '世の中にこれほどにも'
+      - '綺麗なものはないほど'
+    Conditions:
+      Class: 'PRIEST'
+      Level: 10
 
 普通の革防具頭:
   Item:

@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import talsitems.talsitems.listener.ClickListener;
 import talsitems.talsitems.listener.DamageEntityListener;
 import talsitems.talsitems.listener.JoinListener;
 import talsitems.talsitems.listener.PlayerDamageListener;
@@ -43,6 +44,7 @@ public final class TALSITEMS extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new DamageEntityListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerDamageListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
+        getServer().getPluginManager().registerEvents(new ClickListener(), this);
 
         //LOADメッセージ終了
         Bukkit.getConsoleSender().sendMessage(prefix+"§aFinish loading items");
