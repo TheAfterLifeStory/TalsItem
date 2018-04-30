@@ -25,7 +25,7 @@ public class DamageEntityListener implements Listener {
         pm = new PenetrateManager();
     }
 
-    @EventHandler (priority = EventPriority.LOW)
+    @EventHandler (priority = EventPriority.LOW)//早い
     public void onDamage(EntityDamageByEntityEvent e)
     {
 
@@ -64,6 +64,7 @@ public class DamageEntityListener implements Listener {
                 lore = lore.replace("§6§o§6§r§7 クリティカル発生率§a: §e","").replace("%","");
                 //数字を取得して代入
                 chance = Integer.parseInt(lore);
+                continue;
             }
 
             //倍率
@@ -73,6 +74,7 @@ public class DamageEntityListener implements Listener {
                 lore = lore.replace("§6§o§6§r§7 クリティカル倍率§a: §6","").replace("倍","");
                 //数字を取得して代入
                 damage = Double.parseDouble(lore);
+                continue;
             }
 
             //命中率
@@ -82,6 +84,7 @@ public class DamageEntityListener implements Listener {
                 lore = lore.replace("§6§o§6§r§7 命中率§a: §e","").replace("%","");
                 //数字を取得して代入
                 atttack = Integer.parseInt(lore);
+                continue;
             }
 
             //貫通ダメージ
@@ -91,6 +94,7 @@ public class DamageEntityListener implements Listener {
                 lore = lore.replace("§6§o§6§r§7 防具貫通ダメージ§a: §c","");
                 //数字を取得して代入
                 penetrate = Double.parseDouble(lore);
+                break;//最後だから
             }
         }
 
@@ -104,7 +108,7 @@ public class DamageEntityListener implements Listener {
         pm.setPenetrate(e,penetrate,p);
     }
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler (priority = EventPriority.HIGHEST)//すごく遅い
     public void onDamageDebug(EntityDamageByEntityEvent e)
     {
         //プレイヤーか

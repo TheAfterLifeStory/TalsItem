@@ -61,6 +61,7 @@ public class ClickListener implements Listener {
                 lore = lore.replace("§6§o§6§r§7 ダメージ§a: §c", "");
                 //double
                 damage = Double.parseDouble(lore);
+                break;//最後だから
             }
         }
 

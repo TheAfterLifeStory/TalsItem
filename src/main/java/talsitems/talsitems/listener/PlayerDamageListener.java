@@ -25,7 +25,7 @@ public class PlayerDamageListener implements Listener {
         dm = new DefenseManager();
     }
 
-    @EventHandler (priority = EventPriority.NORMAL)
+    @EventHandler (priority = EventPriority.NORMAL)//普通
     public void onDamaged(EntityDamageEvent e)
     {
         //プレイヤーか
@@ -80,6 +80,7 @@ public class PlayerDamageListener implements Listener {
                     lore = lore.replace("§6§o§6§r§7 防御力§a: §6","");
                     //数字を取得して代入
                     defense = defense + Double.parseDouble(lore);
+                    continue;
                 }
 
                 //ブロック確率
@@ -89,6 +90,7 @@ public class PlayerDamageListener implements Listener {
                     lore = lore.replace("§6§o§6§r§7 ブロックチャンス§a: §e","").replace("%","");
                     //数字を取得して代入
                     chance = chance + Integer.parseInt(lore);
+                    continue;
                 }
 
                 //ブロック割合
@@ -98,6 +100,7 @@ public class PlayerDamageListener implements Listener {
                     lore = lore.replace("§6§o§6§r§7 ブロック割合§a: §6","").replace("%","");
                     //数字を取得して代入
                     block = block + Integer.parseInt(lore);
+                    continue;
                 }
 
                 //回避率
@@ -107,6 +110,7 @@ public class PlayerDamageListener implements Listener {
                     lore = lore.replace("§6§o§6§r§7 回避率§a: §d","").replace("%","");
                     //数字を取得して代入
                     achance = achance + Integer.parseInt(lore);
+                    break;
                 }
             }
         }
@@ -122,7 +126,7 @@ public class PlayerDamageListener implements Listener {
 
     }
 
-    @EventHandler (priority = EventPriority.MONITOR)
+    @EventHandler (priority = EventPriority.MONITOR)//とても遅い
     public void onDamagedMessage(EntityDamageEvent e)
     {
         //プレイヤーか
