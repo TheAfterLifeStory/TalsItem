@@ -61,10 +61,4 @@ public class HealingListener implements Listener {
         //設定
         hm.setHealing(e,heal);
     }
-
-    @EventHandler
-    public void onTest(PlayerInteractEvent e)
-    {
-        e.setCancelled(true);
-    }
 }
