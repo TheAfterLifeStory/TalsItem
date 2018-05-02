@@ -1,5 +1,7 @@
 package talsitems.talsitems.listener;
 
+import net.minecraft.server.v1_12_R1.PacketPlayOutAttachEntity;
+import net.minecraft.server.v1_12_R1.PacketPlayOutEntityEquipment;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -15,6 +17,7 @@ public class ClickListener implements Listener {
     @EventHandler
     public void onClick(PlayerInteractEvent e)
     {
+
         Player p = e.getPlayer();
         ItemStack itemStack = p.getInventory().getItemInMainHand();
 

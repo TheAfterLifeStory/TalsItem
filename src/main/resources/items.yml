@@ -91,15 +91,19 @@
 # AddMagicDamage: <Damage> *未実装
 # AddPenetrate: <Damage> *未実装
 # AddCriticalChance: <Damage> *未実装
-# AddAvoidanceChance: <Chance> *未実装
+# AddCriticalDamage: <Damage> *未実装
+# AddAttackChance: <Chance> *未実装
 # AddBlockChance: <Chance> *未実装
-# AddXpBonus: <Bonus> *未実装
+# AddBlockPercent: <Percent> *未実装
+# AddAvoidanceChance: <Chance> *未実装
 # AddHealth: <Health> *未実装
+# AddMana: <Mana> *未実装
 # AddHealthAmount: <Amount> *未実装
 # AddManaAmount: <Amount> *未実装
-# AddHealthRegeneration: <Amount> *未実装
+# AddHealthRegeneration: <Amount> *未実装 e
 # AddManaRegeneration: <Amount> *未実装
 # AddWalkSpeed: <Speed> *未実装
+# AddXpBonus: <Bonus> *未実装
 
 ダイヤの剣:
   Item:

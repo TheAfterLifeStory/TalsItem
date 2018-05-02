@@ -81,6 +81,7 @@ public class ItemManager {
         double damage;
         List<String> list = new ArrayList<>();
         List<String> stats = new ArrayList<>();
+        List<String> addstats = new ArrayList<>();
 
         //デフォルトの値を設定
         id =1; //アイテムＩＤ
@@ -348,6 +349,115 @@ public class ItemManager {
             stats.add("§6§o§6§r§7 回復量§a: §6"+config.getDouble(name + ".Data.Stats.Durability")+"§f/§c"+config.getDouble(name + ".Data.Stats.FoodLevel"));
         }
 
+        //アクセサリーstats
+
+        //ダメージ
+        if(config.get(name+".Data.Stats.AddDamage") !=null)
+        {
+            addstats.add("§6§o§6§r§7 ダメージ§a: §c+"+config.getDouble(name + ".Data.Stats.AddDamage"));
+        }
+
+        //クリティカル
+        if(config.get(name+".Data.Stats.AddCriticalChance") !=null)
+        {
+            addstats.add("§6§o§6§r§7 クリティカル発生率§a: §6+"+config.getInt(name + ".Data.Stats.AddCriticalChance")+"%");
+        }
+
+        //クリティカルダメージ
+        if(config.get(name+".Data.Stats.AddCriticalDamage") !=null)
+        {
+            addstats.add("§6§o§6§r§7 クリティカル倍率§a: §e+"+config.getDouble(name + ".Data.Stats.AddCriticalDamage")+"倍");
+        }
+
+        //マジックだメージ
+        if(config.get(name+".Data.Stats.AddMagicDamage") !=null)
+        {
+            addstats.add("§6§o§6§r§7 魔法ダメージ増加§a: §d+"+config.getDouble(name + ".Data.Stats.AddMagicDamage"));
+        }
+
+        //貫通
+        if(config.get(name+".Data.Stats.AddPenetrate") !=null)
+        {
+            addstats.add("§6§o§6§r§7 防御貫通ダメージ§a: §c+"+config.getDouble(name + ".Data.Stats.AddMagicDamage"));
+        }
+
+        //命中率
+        if(config.get(name+".Data.Stats.AddCriticalDamage") !=null)
+        {
+            addstats.add("§6§o§6§r§7 命中率§a: §e+"+config.getInt(name + ".Data.Stats.AddAttackChance")+"%");
+        }
+
+        //防御力
+        if(config.get(name+".Data.Stats.AddDefense") !=null)
+        {
+            addstats.add("§6§o§6§r§7 防御力§a: §d+"+config.getDouble(name + ".Data.Stats.AddDefense"));
+        }
+
+        //ブロックチャンス
+        if(config.get(name+".Data.Stats.AddDefense") !=null)
+        {
+            addstats.add("§6§o§6§r§7 ブロック確率§a: §6+"+config.getDouble(name + ".Data.Stats.AddBlockChance")+"%");
+        }
+
+        //ブロック割合
+        if(config.get(name+".Data.Stats.AddDefense") !=null)
+        {
+            addstats.add("§6§o§6§r§7 ブロック割合§a: §e+"+config.getDouble(name + ".Data.Stats.AddBlockPercent")+"%");
+        }
+
+        //かわす
+        if(config.get(name+".Data.Stats.AddAvoidanceChance") !=null)
+        {
+            addstats.add("§6§o§6§r§7 回避率§a: §d+"+config.getDouble(name + ".Data.Stats.AddAvoidanceChance")+"%");
+        }
+
+        //ヘルス量
+        if(config.get(name+".Data.Stats.AddHealth") !=null)
+        {
+            addstats.add("§6§o§6§r§7 ヘルス§a: §c+"+config.getDouble(name + ".Data.Stats.AddHealth"));
+        }
+
+        //マナ
+        if(config.get(name+".Data.Stats.AddMana") !=null)
+        {
+            addstats.add("§6§o§6§r§7 マナ§a: §b+"+config.getDouble(name + ".Data.Stats.AddMana"));
+        }
+
+        //ヘルス回復量
+        if(config.get(name+".Data.Stats.AddHealthAmount") !=null)
+        {
+            addstats.add("§6§o§6§r§7 ヘルス回復量§a: §6+"+config.getDouble(name + ".Data.Stats.AddHealthAmount"));
+        }
+
+        //マナ回復量
+        if(config.get(name+".Data.Stats.AddManaAmount") !=null)
+        {
+            addstats.add("§6§o§6§r§7 マナ回復量§a: §6+"+config.getDouble(name + ".Data.Stats.AddManaAmount"));
+        }
+
+        //ヘルス回復速度
+        if(config.get(name+".Data.Stats.AddHealthRegeneration") !=null)
+        {
+            addstats.add("§6§o§6§r§7 ヘルス回復速度§a: §6+"+config.getDouble(name + ".Data.Stats.AddHealthRegeneration")+"%");
+        }
+
+        //マナ回復速度
+        if(config.get(name+".Data.Stats.AddManaRegeneration") !=null)
+        {
+            addstats.add("§6§o§6§r§7 マナ回復速度§a: §6+"+config.getDouble(name + ".Data.Stats.AddManaRegeneration")+"%");
+        }
+
+        //歩くスピード
+        if(config.get(name+".Data.Stats.AddWalkSpeed") !=null)
+        {
+            addstats.add("§6§o§6§r§7 歩くスピード§a: §b+"+config.getDouble(name + ".Data.Stats.AddWalkSpeed")+"%");
+        }
+
+        if(config.get(name+".Data.Stats.AddXpBonus") !=null)
+        {
+            addstats.add("§6§o§6§r§7 XP量増加§a: §b+"+config.getDouble(name + ".Data.Stats.AddXpBonus")+"%");
+        }
+
         //アイテムを制作
         ItemStack item = new ItemStack(Material.AIR, 1,(short) data);
 
@@ -383,6 +493,14 @@ public class ItemManager {
         //ステータス
 
         lore.addAll(stats);
+
+        if(type.equals("イヤリング")||
+                type.equals("ネックレス")||
+                type.equals("腕輪")||
+                type.equals("指輪"))
+        {
+            lore.addAll(addstats);
+        }
 
         //使用条件
         if(config.get(name+".Data.Conditions") !=null)
@@ -597,39 +715,6 @@ public class ItemManager {
         health3.set("Slots", new NBTTagString("head"));
         modifiers.add(health3);
         modifiers.add(damages);
-        assert compound != null;
-        compound.set("AttributeModifiers", modifiers);
-        nmsStack.setTag(compound);
-        item = CraftItemStack.asBukkitCopy(nmsStack);
-
-        return item;
-    }
-
-    private ItemStack setHealth(ItemStack item,int health2,String type)
-    {
-        if(item.getType() == Material.BOW
-                || type.equals("§b魔法の杖")
-                || type.equals("§b魔法の書")
-                || type.equals("§b銃")
-                )
-        {
-            return item;
-        }
-
-        net.minecraft.server.v1_12_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(item);
-        NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
-        NBTTagList modifiers = new NBTTagList();
-        NBTTagCompound damages = new NBTTagCompound();
-        NBTTagCompound health = new NBTTagCompound();
-        health.set("AttributeName", new NBTTagString("generic.maxHealth"));
-        health.set("Name", new NBTTagString("generic.maxHealth"));
-        health.set("Amount", new NBTTagInt(health2));
-        health.set("Operation", new NBTTagInt(0));
-        health.set("UUIDLeast", new NBTTagInt(894654));
-        health.set("UUIDMost", new NBTTagInt(2872));
-        health.set("Slot", new NBTTagString("mainhand"));
-        modifiers.add(damages);
-        modifiers.add(health);
         assert compound != null;
         compound.set("AttributeModifiers", modifiers);
         nmsStack.setTag(compound);
