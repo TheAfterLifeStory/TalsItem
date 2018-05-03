@@ -113,6 +113,7 @@ public class DamageEntityListener implements Listener {
             }
         }
 
+        //殴ったときの攻撃をキャンセルさせる
         if(type.equals("魔法の書")
                 ||type.equals("魔法の杖"))
         {
@@ -125,6 +126,12 @@ public class DamageEntityListener implements Listener {
             {
                 TALSITEMS.ItemDamage.remove(p);
             }
+        }
+        //殴ったときの攻撃をキャンセルさせる2
+        if(type.equals("弓"))
+        {
+            e.setCancelled(true);
+            return;
         }
 
         //命中率
