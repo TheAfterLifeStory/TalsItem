@@ -30,14 +30,85 @@ public class AttackSpeedManager {
 
                         cancel();
                     }
+                }.runTaskTimer(plugin, 10, 1);
+
+                return; //終了
+
+            case "早い":
+
+                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
+                new BukkitRunnable(){//runで回す
+                    @Override
+                    public void run() {
+
+                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);//クールダウン後に抜く
+
+                        cancel();
+                    }
+                }.runTaskTimer(plugin, 15, 1);
+
+                return; //終了
+
+            case "少し早い":
+
+                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
+                new BukkitRunnable(){//runで回す
+                    @Override
+                    public void run() {
+
+                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);//クールダウン後に抜く
+
+                        cancel();
+                    }
                 }.runTaskTimer(plugin, 20, 1);
 
                 return; //終了
-            case "早い":
-            case "少し早い":
+
             case "普通":
+
+                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
+                new BukkitRunnable(){//runで回す
+                    @Override
+                    public void run() {
+
+                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);//クールダウン後に抜く
+
+                        cancel();
+                    }
+                }.runTaskTimer(plugin, 25, 1);
+
+                return; //終了
+
             case "少し遅い":
+
+                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
+                new BukkitRunnable(){//runで回す
+                    @Override
+                    public void run() {
+
+                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);//クールダウン後に抜く
+
+                        cancel();
+                    }
+                }.runTaskTimer(plugin, 30, 1);
+
+                return; //終了
+
             case "遅い":
+
+                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
+                new BukkitRunnable(){//runで回す
+                    @Override
+                    public void run() {
+
+                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);//クールダウン後に抜く
+
+                        cancel();
+                    }
+                }.runTaskTimer(plugin, 35, 1);
+
+                return; //終了
+
             case "とても遅い":
         }
     }
