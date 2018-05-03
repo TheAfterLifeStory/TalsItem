@@ -192,7 +192,7 @@
       Damage: 4.0
       CriticalChance: 10
       CriticalDamage: 1.8
-      AttackChance: 93
+      AttackChance: 94
     Description:
       - '不気味な杖'
       - 'まがまがしい空気が'
@@ -216,6 +216,7 @@
       MagicDamage: 4.0
       CriticalChance: 16
       CriticalDamage: 2.3
+      AttackChance: 97
     Description:
       - '本が光って見えるほど'
       - '美しい'
