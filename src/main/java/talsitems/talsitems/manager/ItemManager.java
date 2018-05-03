@@ -695,16 +695,20 @@ public class ItemManager {
     {
         switch (type)
         {
-            case "VERY_FAST":
+            case "SUPER_FAST":
                 return "とても早い";//1
-            case "FAST":
+            case "VERY_FAST":
                 return "早い";//2
+            case "FAST":
+                return "少し早い";//3
             case "NORMAL":
-                return "普通";//3
+                return "普通";//4
             case "SLOW":
-                return "遅い";//4
+                return "少し遅い";//5
             case "VERY_SLOW":
-                return "とても遅い";//5
+                return "遅い";//6
+            case "SUPER_SLOW":
+                return "とても遅い";//7
         }
         return "NORMAL";
     }

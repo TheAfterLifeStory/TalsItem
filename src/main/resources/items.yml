@@ -108,11 +108,14 @@
 #========================================================
 #攻撃スピードについて
 #種類:
+# SUPER_FAST
 # VERY_FAST
 # FAST
 # NORMAL
 # SLOW
 # VERY_SLOW
+# SUPER_SLOW
+
 ダイヤの剣:
   Item:
     Name: 'ダイヤの剣'

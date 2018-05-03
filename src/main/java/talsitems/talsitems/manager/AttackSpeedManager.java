@@ -26,63 +26,19 @@ public class AttackSpeedManager {
                     @Override
                     public void run() {
 
-                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);
+                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);//クールダウン後に抜く
 
                         cancel();
                     }
                 }.runTaskTimer(plugin, 20, 1);
+
                 return; //終了
             case "早い":
-
-                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
-                new BukkitRunnable(){//runで回す
-                    @Override
-                    public void run() {
-
-                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);
-
-                        cancel();
-                    }
-                }.runTaskTimer(plugin, 30, 1);
-                return;//終了
+            case "少し早い":
             case "普通":
-
-                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
-                new BukkitRunnable(){//runで回す
-                    @Override
-                    public void run() {
-
-                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);
-
-                        cancel();
-                    }
-                }.runTaskTimer(plugin, 40, 1);
-                return;//終了
+            case "少し遅い":
             case "遅い":
-
-                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
-                new BukkitRunnable(){//runで回す
-                    @Override
-                    public void run() {
-
-                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);
-
-                        cancel();
-                    }
-                }.runTaskTimer(plugin, 50, 1);
-                return;//終了
             case "とても遅い":
-
-                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
-                new BukkitRunnable(){//runで回す
-                    @Override
-                    public void run() {
-
-                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);
-
-                        cancel();
-                    }
-                }.runTaskTimer(plugin, 60, 1);
         }
     }
 }
