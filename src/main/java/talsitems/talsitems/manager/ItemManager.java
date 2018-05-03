@@ -169,6 +169,16 @@ public class ItemManager {
 
         //ステータス作成
 
+        //アタックスピード
+        if(config.get(name+".Data.Stats.AttackSpeed") !=null)
+        {
+            stats.add("§6§o§6§r§7 攻撃スピード§a: §3"+getSpeed(config.getString(name + ".Data.Stats.AttackSpeed")));
+        }
+        else if(config.get(name+".Data.Stats.Damage") !=null)//もしなくても攻撃を設定していた場合
+        {
+            stats.add("§6§o§6§r§7 攻撃スピード§a: §3"+getSpeed("NORMAL"));
+        }
+
         //ダメージ
         if(config.get(name+".Data.Stats.Damage") !=null)
         {
@@ -255,14 +265,24 @@ public class ItemManager {
         //ヘルス増加
         if(config.get(name+".Data.Stats.AddHealth") !=null)
         {
-            stats.add("§6§o§6§r§7 ヘルス§a: §c+"+config.getDouble(name + ".Data.Stats.AddHealth"));
-            health = config.getInt(name+".Data.Stats.AddHealth");
+            if(!type.equals("§bイヤリング")&&
+                    !type.equals("§bネックレス")&&
+                    !type.equals("§b腕輪")&&
+                    !type.equals("§b指輪")) {
+                stats.add("§6§o§6§r§7 ヘルス§a: §c+" + config.getDouble(name + ".Data.Stats.AddHealth"));
+                health = config.getInt(name + ".Data.Stats.AddHealth");
+            }
         }
 
         //マナ増加
         if(config.get(name+".Data.Stats.AddMana") !=null)
         {
-            stats.add("§6§o§6§r§7 マナ§a: §b+"+config.getInt(name + ".Data.Stats.AddMana"));
+            if(!type.equals("§bイヤリング")&&
+                    !type.equals("§bネックレス")&&
+                    !type.equals("§b腕輪")&&
+                    !type.equals("§b指輪")) {
+                stats.add("§6§o§6§r§7 マナ§a: §b+" + config.getInt(name + ".Data.Stats.AddMana"));
+            }
         }
 
         //歩くスピード
@@ -351,6 +371,10 @@ public class ItemManager {
 
         //アクセサリーstats
 
+        /**
+         * ここから↓アクセサリー
+         */
+
         //ダメージ
         if(config.get(name+".Data.Stats.AddDamage") !=null)
         {
@@ -394,13 +418,13 @@ public class ItemManager {
         }
 
         //ブロックチャンス
-        if(config.get(name+".Data.Stats.AddDefense") !=null)
+        if(config.get(name+".Data.Stats.AddBlockChance") !=null)
         {
             addstats.add("§6§o§6§r§7 ブロック確率§a: §6+"+config.getDouble(name + ".Data.Stats.AddBlockChance")+"%");
         }
 
         //ブロック割合
-        if(config.get(name+".Data.Stats.AddDefense") !=null)
+        if(config.get(name+".Data.Stats.AddBlockPercent") !=null)
         {
             addstats.add("§6§o§6§r§7 ブロック割合§a: §e+"+config.getDouble(name + ".Data.Stats.AddBlockPercent")+"%");
         }
@@ -494,10 +518,10 @@ public class ItemManager {
 
         lore.addAll(stats);
 
-        if(type.equals("イヤリング")||
-                type.equals("ネックレス")||
-                type.equals("腕輪")||
-                type.equals("指輪"))
+        if(type.equals("§bイヤリング")||
+                type.equals("§bネックレス")||
+                type.equals("§b腕輪")||
+                type.equals("§b指輪"))
         {
             lore.addAll(addstats);
         }
@@ -665,6 +689,24 @@ public class ItemManager {
                 return "§b食べ物";//食べ物
         }
         return null;
+    }
+
+    private String getSpeed(String type)
+    {
+        switch (type)
+        {
+            case "VERY_FAST":
+                return "とても早い";//1
+            case "FAST":
+                return "早い";//2
+            case "NORMAL":
+                return "普通";//3
+            case "SLOW":
+                return "遅い";//4
+            case "VERY_SLOW":
+                return "とても遅い";//5
+        }
+        return "NORMAL";
     }
 
     private ItemStack setDamage(ItemStack item,double damage,int health2,String type)

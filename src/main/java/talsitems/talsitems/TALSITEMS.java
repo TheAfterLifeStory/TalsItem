@@ -27,6 +27,8 @@ public final class TALSITEMS extends JavaPlugin {
     public static HashMap<String, ItemStack> itemNameList = new HashMap<>();
     public static TreeMap<Integer, String> IdName = new TreeMap<>();
     public static HashMap<Player, Boolean> PlayerDebug = new HashMap<>();
+    public static HashMap<String, Player> ItemCoolDwon = new HashMap<>();
+    public static HashMap<Player, Boolean> ItemDamage = new HashMap<>();
 
     @Override
     public void onEnable() {

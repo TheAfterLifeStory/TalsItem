@@ -41,6 +41,13 @@ public class DamageEntityListener implements Listener {
         ItemStack itemStack = p.getInventory().getItemInMainHand();
         int chance = 3,atttack = 95;
         double damage = 1.5,penetrate = 0.0;
+        String type = "素材";
+
+        if(TALSITEMS.ItemCoolDwon.containsKey(p.getUniqueId().toString()+itemStack))
+        {
+            e.setCancelled(true);
+            return;
+        }
 
         //空気だった場合
         if(itemStack.getType() == Material.AIR)
@@ -57,6 +64,14 @@ public class DamageEntityListener implements Listener {
         //loreを拡張
         for(String lore : itemStack.getItemMeta().getLore())
         {
+            //type
+            if(lore.startsWith("§6§o§6§r§7 アイテムタイプ§a:"))
+            {
+                type = lore.replace("§6§o§6§r§7 アイテムタイプ§a: §b", "");
+
+                continue;
+            }
+
             //確率
             if(lore.startsWith("§6§o§6§r§7 クリティカル発生率§a:"))
             {
@@ -95,6 +110,20 @@ public class DamageEntityListener implements Listener {
                 //数字を取得して代入
                 penetrate = Double.parseDouble(lore);
                 break;//最後だから
+            }
+        }
+
+        if(type.equals("魔法の書")
+                ||type.equals("魔法の杖"))
+        {
+            if(!TALSITEMS.ItemDamage.containsKey(p))//無かったらキャンセル
+            {
+                e.setCancelled(true);
+                return;
+            }
+            else//あったら消す
+            {
+                TALSITEMS.ItemDamage.remove(p);
             }
         }
 

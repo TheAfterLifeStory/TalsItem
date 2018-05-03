@@ -1,7 +1,5 @@
 package talsitems.talsitems.listener;
 
-import net.minecraft.server.v1_12_R1.PacketPlayOutAttachEntity;
-import net.minecraft.server.v1_12_R1.PacketPlayOutEntityEquipment;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -11,8 +9,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import talsitems.talsitems.TALSITEMS;
+import talsitems.talsitems.manager.AttackSpeedManager;
 
 public class ClickListener implements Listener {
+
+    private AttackSpeedManager asm;
+
+    public ClickListener()
+    {
+        asm = new AttackSpeedManager();
+    }
 
     @EventHandler
     public void onClick(PlayerInteractEvent e)
@@ -40,7 +47,7 @@ public class ClickListener implements Listener {
         }
 
         //Ｔｙｐｅ作成
-        String type = "素材";
+        String type = "素材",speed ="";
         //damageを作成
         double damage = 1;
 
@@ -57,6 +64,14 @@ public class ClickListener implements Listener {
                 continue;
             }
 
+            //type
+            if(lore.startsWith("§6§o§6§r§7 攻撃スピード§a:"))
+            {
+                speed = lore.replace("§6§o§6§r§7 攻撃スピード§a: §3", "");
+
+                continue;
+            }
+
             //ダメージ
             if(lore.startsWith("§6§o§6§r§7 ダメージ§a:"))
             {
@@ -66,6 +81,11 @@ public class ClickListener implements Listener {
                 damage = Double.parseDouble(lore);
                 break;//最後だから
             }
+        }
+
+        if(TALSITEMS.ItemCoolDwon.containsKey(p.getUniqueId().toString()+itemStack))
+        {
+            return;
         }
 
         //魔法の杖
@@ -114,6 +134,7 @@ public class ClickListener implements Listener {
 
                     LivingEntity le = (LivingEntity) entity;
                     le.damage(damage,p);
+                    TALSITEMS.ItemDamage.put(p,true);
                 }
             }
         }
@@ -121,6 +142,8 @@ public class ClickListener implements Listener {
         //魔法の本
         if(type.equals("魔法の書"))
         {
+            e.setCancelled(true);
+
             Location loc = p.getLocation();
             loc = loc.add(+loc.getDirection().getX(),0,+loc.getDirection().getZ())
                     .add(+loc.getDirection().getX(),0,+loc.getDirection().getZ())
@@ -147,8 +170,11 @@ public class ClickListener implements Listener {
 
                 LivingEntity le = (LivingEntity) entity;
                 le.damage(damage,p);
+                TALSITEMS.ItemDamage.put(p,true);
             }
         }
+
+        asm.setCoolDown(e,itemStack,speed);//クールダウン
     }
 
     private void particle(Location loc, Player player) {

@@ -83,6 +83,7 @@
 # Money <Amount> *未実装
 # Durability <Amount> *未実装
 # FoodLevel <Amount> *未実装
+# AttackSpeed <Speed>
 #========================================================
 #ステータス(アクセサリー)
 #種類:
@@ -104,7 +105,14 @@
 # AddManaRegeneration: <Amount> *未実装
 # AddWalkSpeed: <Speed> *未実装
 # AddXpBonus: <Bonus> *未実装
-
+#========================================================
+#攻撃スピードについて
+#種類:
+# VERY_FAST
+# FAST
+# NORMAL
+# SLOW
+# VERY_SLOW
 ダイヤの剣:
   Item:
     Name: 'ダイヤの剣'
@@ -115,6 +123,7 @@
   Data:
     Stats:
       Type: 'SWORD'
+      Rank: 1
       Damage: 4.0
       CriticalChance: 10
       CriticalDamage: 2
@@ -135,6 +144,7 @@
   Data:
     Stats:
       Type: 'BOW'
+      Rank: 1
       Damage: 7.0
       CriticalChance: 15
       CriticalDamage: 1.8
@@ -155,6 +165,7 @@
   Data:
     Stats:
       Type: 'AXE'
+      Rank: 1
       Damage: 9.0
       CriticalChance: 7
       CriticalDamage: 3.5
@@ -177,6 +188,7 @@
   Data:
     Stats:
       Type: 'MAGIC_WAND'
+      Rank: 1
       Damage: 4.0
       CriticalChance: 10
       CriticalDamage: 1.8
@@ -199,6 +211,7 @@
   Data:
     Stats:
       Type: 'MAGIC_BOOK'
+      Rank: 2
       Damage: 6.0
       MagicDamage: 4.0
       CriticalChance: 16
@@ -222,6 +235,7 @@
   Data:
     Stats:
       Type: 'HELMET'
+      Rank: 1
       Defense: 2.0
       AvoidanceChance: 4
     Description:
@@ -241,6 +255,7 @@
   Data:
     Stats:
       Type: 'CHESTPLATE'
+      Rank: 1
       Defense: 3.0
       BlockChance: 13
       BlockPercent: 23
@@ -261,6 +276,7 @@
   Data:
     Stats:
       Type: 'LEGGINGS'
+      Rank: 1
       Defense: 2.5
       BlockChance: 20
       BlockPercent: 17
@@ -281,6 +297,7 @@
   Data:
     Stats:
       Type: 'BOOT'
+      Rank: 1
       Defense: 2.0
       AvoidanceChance: 3
     Description:
@@ -289,3 +306,85 @@
     Conditions:
       Class: 'SOLDIER'
       Level: 10
+
+ダイヤのイヤリング:
+  Item:
+    Name: 'ダイヤのリング'
+    Tid: 25
+    Id: 381
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'EARRINGS'
+      Rank: 3
+      AddDamage: 3.0
+      AddDefense: 5.0
+      AddPenetrate: 7.0
+      AddCriticalChance: 9
+      AddCriticalDamage: 0.4
+      AddAttackChance: 2
+    Description:
+      - '攻撃に特化したイヤリング'
+      - 'とてもきれいで何かに似ている'
+
+鉄のネックレス:
+  Item:
+    Name: '鉄のネックレス'
+    Tid: 26
+    Id: 420
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'NECKLACE'
+      Rank: 2
+      AddDefense: 8.6
+      AddBlockChance: 3
+      AddBlockPercent: 6
+      AddAvoidanceChance: 6
+    Description:
+      - 'とても重くて'
+      - '頑丈'
+    Conditions:
+      Class: 'GUARDIAN'
+      Level: 10
+
+普通の腕輪:
+  Item:
+    Name: '普通の腕輪'
+    Tid: 27
+    Id: 337
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'BRACELET'
+      Rank: 1
+      AddHealth: 5
+      AddMana: 2
+      AddHealthAmount: 5
+      AddManaAmount:  3
+    Description:
+      - '普通の腕輪'
+      - '少し重いが'
+      - '使いやすい'
+
+綺麗な指輪:
+  Item:
+    Name: '綺麗な指輪'
+    Tid: 28
+    Id: 341
+    Data: 0
+    Unbreakable: true
+  Data:
+    Stats:
+      Type: 'RING'
+      Rank: 3
+      AddHealth: 10
+      AddMana: 50
+      AddDamage: 23.0
+    Description:
+      - '宝石が輝いている'
+      - 'まぶしい'
+      - 'まぶしくて指輪が見れない'
