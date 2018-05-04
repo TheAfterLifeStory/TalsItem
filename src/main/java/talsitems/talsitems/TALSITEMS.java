@@ -30,6 +30,8 @@ public final class TALSITEMS extends JavaPlugin {
     public static HashMap<String, Player> ItemCoolDwon = new HashMap<>();
     public static HashMap<Player, Boolean> ItemDamage = new HashMap<>();
 
+    public Manager manager;
+
     @Override
     public void onEnable() {
 
@@ -38,6 +40,7 @@ public final class TALSITEMS extends JavaPlugin {
 
         //アイテム読み込み
         new ItemManager().itemLoad();
+        manager = new Manager();
 
         //リスナー読み込み
         getServer().getPluginManager().registerEvents(new DamageEntityListener(), this);

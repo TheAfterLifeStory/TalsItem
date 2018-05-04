@@ -153,7 +153,6 @@ public class AttackSpeedManager {
                     }
                 }.runTaskTimer(plugin, 40, 1);
 
-                return; //終了
         }
     }
 }
