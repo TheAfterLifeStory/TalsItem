@@ -45,6 +45,7 @@ public final class TALSITEMS extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new HealingListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
         getServer().getPluginManager().registerEvents(new ClickListener(), this);
+        getServer().getPluginManager().registerEvents(new ItemHOldListener(), this);
 
         //LOADメッセージ終了
         Bukkit.getConsoleSender().sendMessage(prefix+"§aFinish loading items");

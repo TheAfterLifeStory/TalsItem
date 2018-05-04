@@ -1,5 +1,8 @@
 package talsitems.talsitems.manager;
 
+import net.minecraft.server.v1_12_R1.Item;
+import net.minecraft.server.v1_12_R1.PacketPlayOutSetCooldown;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -21,6 +24,10 @@ public class AttackSpeedManager {
         {
             case "とても早い":
 
+                Item itemd = Item.getById(item.getTypeId());
+                PacketPlayOutSetCooldown packet = new PacketPlayOutSetCooldown(itemd,10);
+                ((CraftPlayer)e.getPlayer()).getHandle().playerConnection.sendPacket(packet);
+
                 TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
                 new BukkitRunnable(){//runで回す
                     @Override
@@ -35,6 +42,10 @@ public class AttackSpeedManager {
                 return; //終了
 
             case "早い":
+
+                itemd = Item.getById(item.getTypeId());
+                packet = new PacketPlayOutSetCooldown(itemd,15);
+                ((CraftPlayer)e.getPlayer()).getHandle().playerConnection.sendPacket(packet);
 
                 TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
                 new BukkitRunnable(){//runで回す
@@ -51,6 +62,10 @@ public class AttackSpeedManager {
 
             case "少し早い":
 
+                itemd = Item.getById(item.getTypeId());
+                packet = new PacketPlayOutSetCooldown(itemd,20);
+                ((CraftPlayer)e.getPlayer()).getHandle().playerConnection.sendPacket(packet);
+
                 TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
                 new BukkitRunnable(){//runで回す
                     @Override
@@ -65,6 +80,10 @@ public class AttackSpeedManager {
                 return; //終了
 
             case "普通":
+
+                itemd = Item.getById(item.getTypeId());
+                packet = new PacketPlayOutSetCooldown(itemd,25);
+                ((CraftPlayer)e.getPlayer()).getHandle().playerConnection.sendPacket(packet);
 
                 TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
                 new BukkitRunnable(){//runで回す
@@ -81,6 +100,10 @@ public class AttackSpeedManager {
 
             case "少し遅い":
 
+                itemd = Item.getById(item.getTypeId());
+                packet = new PacketPlayOutSetCooldown(itemd,30);
+                ((CraftPlayer)e.getPlayer()).getHandle().playerConnection.sendPacket(packet);
+
                 TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
                 new BukkitRunnable(){//runで回す
                     @Override
@@ -96,6 +119,10 @@ public class AttackSpeedManager {
 
             case "遅い":
 
+                itemd = Item.getById(item.getTypeId());
+                packet = new PacketPlayOutSetCooldown(itemd,35);
+                ((CraftPlayer)e.getPlayer()).getHandle().playerConnection.sendPacket(packet);
+
                 TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
                 new BukkitRunnable(){//runで回す
                     @Override
@@ -110,6 +137,23 @@ public class AttackSpeedManager {
                 return; //終了
 
             case "とても遅い":
+
+                itemd = Item.getById(item.getTypeId());
+                packet = new PacketPlayOutSetCooldown(itemd,40);
+                ((CraftPlayer)e.getPlayer()).getHandle().playerConnection.sendPacket(packet);
+
+                TALSITEMS.ItemCoolDwon.put(e.getPlayer().getUniqueId().toString()+item,e.getPlayer());//追加
+                new BukkitRunnable(){//runで回す
+                    @Override
+                    public void run() {
+
+                        TALSITEMS.ItemCoolDwon.remove(e.getPlayer().getUniqueId().toString()+item);//クールダウン後に抜く
+
+                        cancel();
+                    }
+                }.runTaskTimer(plugin, 40, 1);
+
+                return; //終了
         }
     }
 }

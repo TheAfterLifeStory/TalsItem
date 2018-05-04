@@ -95,7 +95,45 @@ public class ClickListener implements Listener {
 
             //ロケーション取得
             Location loc = p.getLocation();
+
+            //ダメージを与える１
+            for(Entity entity : loc.getWorld().getNearbyEntities(loc,0.2,1.5,0.2))
+            {
+                //entityを変える
+                if(!(entity instanceof LivingEntity))
+                {
+                    continue;
+                }
+
+                if(entity == p)
+                {
+                    continue;
+                }
+
+                LivingEntity le = (LivingEntity) entity;
+                le.damage(damage,p);
+                TALSITEMS.ItemDamage.put(p,true);
+            }
             loc = loc.add(loc.getDirection().getX(),loc.getDirection().getY()+1.2,loc.getDirection().getZ());
+
+            //ダメージを与える２
+            for(Entity entity : loc.getWorld().getNearbyEntities(loc,0.2,1.5,0.2))
+            {
+                //entityを変える
+                if(!(entity instanceof LivingEntity))
+                {
+                    continue;
+                }
+
+                if(entity == p)
+                {
+                    continue;
+                }
+
+                LivingEntity le = (LivingEntity) entity;
+                le.damage(damage,p);
+                TALSITEMS.ItemDamage.put(p,true);
+            }
 
             //パーティクル
             p.getWorld().spawnParticle(Particle.SPELL_WITCH, loc, 0, 1, 0, 0, 0);

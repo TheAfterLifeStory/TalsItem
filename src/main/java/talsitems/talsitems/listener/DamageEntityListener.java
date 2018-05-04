@@ -6,7 +6,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import talsitems.talsitems.TALSITEMS;
 import talsitems.talsitems.manager.AttackChanceManager;
 import talsitems.talsitems.manager.CriticalManager;
@@ -167,14 +170,5 @@ public class DamageEntityListener implements Listener {
             }
         }
     }
-
-    /*
-    @EventHandler
-    public void onDamages(PlayerInteractEntityEvent e)
-    {
-        LivingEntity le = (LivingEntity) e.getRightClicked();
-        le.damage(5,e.getPlayer());
-    }
-    */
 
 }
