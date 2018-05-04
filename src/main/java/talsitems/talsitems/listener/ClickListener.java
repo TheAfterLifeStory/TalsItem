@@ -28,6 +28,11 @@ public class ClickListener implements Listener {
         Player p = e.getPlayer();
         ItemStack itemStack = p.getInventory().getItemInMainHand();
 
+        if(TALSITEMS.ItemCoolDwon.containsKey(p.getUniqueId().toString()+itemStack))
+        {
+            return;
+        }
+
         //クリックタイプ
         if(e.getAction() != Action.LEFT_CLICK_AIR)
         {
@@ -81,11 +86,6 @@ public class ClickListener implements Listener {
                 damage = Double.parseDouble(lore);
                 break;//最後だから
             }
-        }
-
-        if(TALSITEMS.ItemCoolDwon.containsKey(p.getUniqueId().toString()+itemStack))
-        {
-            return;
         }
 
         //魔法の杖

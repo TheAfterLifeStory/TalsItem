@@ -1,6 +1,9 @@
 package talsitems.talsitems.listener;
 
+import net.minecraft.server.v1_12_R1.Item;
+import net.minecraft.server.v1_12_R1.PacketPlayOutSetCooldown;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -48,6 +51,8 @@ public class ItemHOldListener implements Listener {
             }
         }
         p.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+
+        //20tick使えなくする
 
         switch (speed)
         {
