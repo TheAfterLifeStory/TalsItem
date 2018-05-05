@@ -14,6 +14,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import talsitems.talsitems.TALSITEMS;
 import talsitems.talsitems.manager.AttackChanceManager;
+import talsitems.talsitems.manager.ClassLevelManager;
 import talsitems.talsitems.manager.CriticalManager;
 import talsitems.talsitems.manager.PenetrateManager;
 
@@ -22,12 +23,14 @@ public class DamageEntityListener implements Listener {
     private AttackChanceManager acm;
     private CriticalManager cm;
     private PenetrateManager pm;
+    private ClassLevelManager clm;
 
     public DamageEntityListener()
     {
         acm = new AttackChanceManager();
         cm = new CriticalManager();
         pm = new PenetrateManager();
+        clm = new ClassLevelManager();
     }
 
     @EventHandler (priority = EventPriority.LOW)//早い
@@ -44,9 +47,9 @@ public class DamageEntityListener implements Listener {
         Player p = (Player) e.getDamager();
         //アイテム
         ItemStack itemStack = p.getInventory().getItemInMainHand();
-        int chance = 3,atttack = 95;
+        int chance = 3,atttack = 95, level = 0;
         double damage = 1.5,penetrate = 0.0;
-        String type = "素材";
+        String type = "素材",classes = "";
 
         if(TALSITEMS.ItemCoolDwon.containsKey(p.getUniqueId().toString()+itemStack))
         {
@@ -114,8 +117,35 @@ public class DamageEntityListener implements Listener {
                 lore = lore.replace("§6§o§6§r§7 防具貫通ダメージ§a: §c","");
                 //数字を取得して代入
                 penetrate = Double.parseDouble(lore);
-                break;//最後だから
             }
+
+            //クラス
+            if(lore.startsWith("§6§o§6§r§7 クラス§a: "))
+            {
+                lore = lore.replace("§6§o§6§r§7 クラス§a: ","");
+
+                classes = lore;
+                break;
+            }
+
+            //レベル
+            if(lore.startsWith("§6§o§6§r§7 レベル§a: "))
+            {
+                lore = lore.replace("§6§o§6§r§7 レベル§a: ","");
+
+                level = Integer.parseInt(lore);
+                break;
+            }
+        }
+
+        //使えるか
+        clm.setConditions(e,p,level,classes);
+
+        //職業が使えるか
+        if(TALSITEMS.ClancelDamage.get(p) != null)
+        {
+            TALSITEMS.ClancelDamage.remove(p);
+            return;
         }
 
         //殴ったときの攻撃をキャンセルさせる
@@ -132,6 +162,7 @@ public class DamageEntityListener implements Listener {
                 TALSITEMS.ItemDamage.remove(p);
             }
         }
+
         //殴ったときの攻撃をキャンセルさせる2
         if(type.equals("弓"))
         {

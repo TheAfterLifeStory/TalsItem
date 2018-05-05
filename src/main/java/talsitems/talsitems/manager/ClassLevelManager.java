@@ -1,28 +1,61 @@
 package talsitems.talsitems.manager;
 
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import talsapi.talsapi.TALSAPI;
 import talsapi.talsapi.api.classes.MainClass;
 import talsitems.talsitems.TALSITEMS;
 
 public class ClassLevelManager {
 
-    public void setConditions(PlayerInteractEvent e,int level,String classes)
+    public void setConditions(Player p,int level,String classes)
     {
-        MainClass mc = TALSAPI.getPlayerDeta(e.getPlayer()).getMainClass();
+        MainClass mc = TALSAPI.getPlayerDeta(p).getMainClass();
 
-        //クラスが違う場合
-        if(classes.equals(mc.getPrefix()))
+        //クラスあっている
+        if(classes.equals(""))
         {
-            TALSITEMS.ClancelDamage.put(e.getPlayer(), true);
             return;
         }
 
-        //レベルが違う場合
-        if(mc.getLevel() != level)
+        if(!classes.equals(mc.getPrefix()))
         {
-            TALSITEMS.ClancelDamage.put(e.getPlayer(), true);
+            p.sendMessage("職業が違うため使えません");
+            TALSITEMS.ClancelWand.put(p,true);
+            return;
+        }
+
+        //レベルがあっている
+        if(mc.getLevel() < level)
+        {
+            p.sendMessage("レベルが低いため使えません");
+            TALSITEMS.ClancelWand.put(p,true);
+        }
+    }
+
+    public void setConditions(EntityDamageByEntityEvent e, Player p, int level, String classes)
+    {
+        MainClass mc = TALSAPI.getPlayerDeta(p).getMainClass();
+
+        //クラスあっている
+        if(classes.equals(""))
+        {
+            return;
+        }
+
+        if(!classes.equals(mc.getPrefix()))
+        {
+            e.setCancelled(true);
+            TALSITEMS.ClancelDamage.put(p,true);
+            return;
+        }
+
+        //レベルがあっている
+        if(mc.getLevel() < level)
+        {
+            e.setCancelled(true);
+            TALSITEMS.ClancelDamage.put(p,true);
+            return;
         }
     }
 }

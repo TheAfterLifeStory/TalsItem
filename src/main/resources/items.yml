@@ -131,6 +131,7 @@
       CriticalChance: 10
       CriticalDamage: 2
       AttackChance: 98
+      AttackSpeed: 'FAST'
     Description:
       - 'ダイヤの剣'
     Conditions:
@@ -151,6 +152,7 @@
       Damage: 7.0
       CriticalChance: 15
       CriticalDamage: 1.8
+      AttackSpeed: 'NORMAL'
     Description:
       - 'これぞ弓'
       - '弓の中の弓'
@@ -174,6 +176,7 @@
       CriticalDamage: 3.5
       AttackChance: 87
       Penetrate: 2.0
+      AttackSpeed: 'NORMAL'
     Description:
       - 'とても奇妙な斧'
       - 'おかしくて笑えて来るほど'
@@ -196,6 +199,7 @@
       CriticalChance: 10
       CriticalDamage: 1.8
       AttackChance: 94
+      AttackSpeed: 'SUPER_FAST'
     Description:
       - '不気味な杖'
       - 'まがまがしい空気が'
@@ -220,6 +224,7 @@
       CriticalChance: 16
       CriticalDamage: 2.3
       AttackChance: 97
+      AttackSpeed: 'VERY_FAST'
     Description:
       - '本が光って見えるほど'
       - '美しい'

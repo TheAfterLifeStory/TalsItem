@@ -11,14 +11,17 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import talsitems.talsitems.TALSITEMS;
 import talsitems.talsitems.manager.AttackSpeedManager;
+import talsitems.talsitems.manager.ClassLevelManager;
 
 public class ClickListener implements Listener {
 
     private AttackSpeedManager asm;
+    private ClassLevelManager clm;
 
     public ClickListener()
     {
         asm = new AttackSpeedManager();
+        clm = new ClassLevelManager();
     }
 
     @EventHandler
@@ -88,7 +91,14 @@ public class ClickListener implements Listener {
                 continue;
             }
 
-            //
+            //クラス
+            if(lore.startsWith("§6§o§6§r§7 クラス§a: "))
+            {
+                lore = lore.replace("§6§o§6§r§7 クラス§a: ","");
+
+                classes = lore;
+                break;
+            }
 
             //レベル
             if(lore.startsWith("§6§o§6§r§7 レベル§a: "))
@@ -100,6 +110,15 @@ public class ClickListener implements Listener {
             }
         }
 
+        clm.setConditions(p,level,classes);
+
+        if(TALSITEMS.ClancelWand.get(p) != null)
+        {
+            TALSITEMS.ClancelWand.remove(p);
+            e.setCancelled(true);
+            return;
+        }
+
         //魔法の杖
         if(type.equals("魔法の杖"))
         {
@@ -109,7 +128,7 @@ public class ClickListener implements Listener {
             Location loc = p.getLocation();
 
             //ダメージを与える１
-            for(Entity entity : loc.getWorld().getNearbyEntities(loc,0.2,1.5,0.2))
+            for(Entity entity : loc.getWorld().getNearbyEntities(loc,0.28,1.5,0.28))
             {
                 //entityを変える
                 if(!(entity instanceof LivingEntity))
@@ -129,7 +148,7 @@ public class ClickListener implements Listener {
             loc = loc.add(loc.getDirection().getX(),loc.getDirection().getY()+1.2,loc.getDirection().getZ());
 
             //ダメージを与える２
-            for(Entity entity : loc.getWorld().getNearbyEntities(loc,0.2,1.5,0.2))
+            for(Entity entity : loc.getWorld().getNearbyEntities(loc,0.25,1.5,0.25))
             {
                 //entityを変える
                 if(!(entity instanceof LivingEntity))
@@ -169,7 +188,7 @@ public class ClickListener implements Listener {
                 p.getWorld().spawnParticle(Particle.SPELL_WITCH, loc, 0, 3, 0, 0, 0);
                 //ダメージを与える
                 //for文
-                for(Entity entity : loc.getWorld().getNearbyEntities(loc,0.2,1.5,0.2))
+                for(Entity entity : loc.getWorld().getNearbyEntities(loc,0.25,1.5,0.25))
                 {
                     //entityを変える
                     if(!(entity instanceof LivingEntity))
@@ -187,6 +206,7 @@ public class ClickListener implements Listener {
                     TALSITEMS.ItemDamage.put(p,true);
                 }
             }
+            TALSITEMS.ClancelDamage.remove(p);
         }
 
         //魔法の本

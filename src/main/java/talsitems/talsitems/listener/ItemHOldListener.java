@@ -23,6 +23,11 @@ public class ItemHOldListener implements Listener {
         String speed = "a";
 
         //空気だった場合
+        if(itemStack == null)
+        {
+            return;
+        }
+
         if(itemStack.getType() == Material.AIR)
         {
             if(p.hasPotionEffect(PotionEffectType.SLOW_DIGGING)) {
