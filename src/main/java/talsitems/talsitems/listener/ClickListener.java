@@ -52,9 +52,10 @@ public class ClickListener implements Listener {
         }
 
         //Ｔｙｐｅ作成
-        String type = "素材",speed ="";
+        String type = "素材",speed ="",classes = "";
         //damageを作成
         double damage = 1;
+        int level = 0;
 
         //Ｌｏｒｅにする
         for(String lore : itemStack.getItemMeta().getLore())
@@ -69,7 +70,7 @@ public class ClickListener implements Listener {
                 continue;
             }
 
-            //type
+            //speed
             if(lore.startsWith("§6§o§6§r§7 攻撃スピード§a:"))
             {
                 speed = lore.replace("§6§o§6§r§7 攻撃スピード§a: §3", "");
@@ -84,7 +85,18 @@ public class ClickListener implements Listener {
                 lore = lore.replace("§6§o§6§r§7 ダメージ§a: §c", "");
                 //double
                 damage = Double.parseDouble(lore);
-                break;//最後だから
+                continue;
+            }
+
+            //
+
+            //レベル
+            if(lore.startsWith("§6§o§6§r§7 レベル§a: "))
+            {
+                lore = lore.replace("§6§o§6§r§7 レベル§a: ","");
+
+                level = Integer.parseInt(lore);
+                break;
             }
         }
 

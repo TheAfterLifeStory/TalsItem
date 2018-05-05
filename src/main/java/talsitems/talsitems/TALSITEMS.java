@@ -29,6 +29,7 @@ public final class TALSITEMS extends JavaPlugin {
     public static HashMap<Player, Boolean> PlayerDebug = new HashMap<>();
     public static HashMap<String, Player> ItemCoolDwon = new HashMap<>();
     public static HashMap<Player, Boolean> ItemDamage = new HashMap<>();
+    public static HashMap<Player, Boolean> ClancelDamage = new HashMap<>();
 
     public Manager manager;
 
